@@ -9,7 +9,6 @@ import products from "../data/product"; // Assuming you have a product data file
 const App = () => {
   return (
     <>
-      <Header />
       <ProductCarts products={products} />
       <Footer />
     </>
