@@ -1,14 +1,6 @@
 import styles from "./header.module.css"; // Using CSS Modules for scoped styles
 
-const NavBar = () => {
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-    { href: "/services", label: "Services" },
-    { href: "/blog", label: "Blog" },
-    { href: "/faq", label: "FAQ" },
-  ];
+const NavBar = ({ links }) => {
   return (
     <ul className={styles.navbar}>
       {links.map((link, index) => (
