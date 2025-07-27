@@ -16,7 +16,6 @@ const Header = () => {
       <h1>LOGO</h1>
       <NavBar links={links} />
     </header>
-
   );
 };
 
