@@ -4,12 +4,13 @@ import Header from "../components/header/Header";
 import Footer from "../components/Footer";
 import "./app.css";
 import ProductCarts from "../components/Product/ProductCart";
+import products from "../data/product"; // Assuming you have a product data file
 
 const App = () => {
   return (
     <>
       <Header />
-      <ProductCarts />
+      <ProductCarts products={products} />
       <Footer />
     </>
   );
