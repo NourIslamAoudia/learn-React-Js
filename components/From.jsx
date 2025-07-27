@@ -3,7 +3,7 @@ import Button from "./button";
 const From = () => {
   return (
     <form>
-      <span htmlFor="email">Email</span>
+      <label htmlFor="email">Email</label>
       <input
         id="email"
         type="email"
