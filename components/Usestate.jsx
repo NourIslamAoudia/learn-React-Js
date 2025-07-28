@@ -43,7 +43,6 @@ const Usestate = () => {
       >
         Log Out
       </button>
-      <span>userInfo: {JSON.stringify(userInfo)}</span>
     </>
   );
 };
