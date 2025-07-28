@@ -8,7 +8,6 @@ import Usestate from "../components/Usestate";
 const App = () => {
   return (
     <>
-      <Product products={products} />
       <Usestate />
       <Footer />
     </>

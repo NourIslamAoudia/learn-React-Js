@@ -1,28 +1,41 @@
 import { useState } from "react";
 
 const Usestate = () => {
-  // user={
-  //   name: "Aoudia Nour Islam",
-  //   age: 20,
-  //   email: "aoudia@example.com"
-  // }
-  const [user, setUser] = useState({
-    name: "Aoudia Nour Islam",
-    age: 20,
-    email: "aoudia@example.com",
+  const [userInfo, setUser] = useState({
+    email: "",
+    password: "",
+    isLoggedIn: false,
   });
   return (
     <>
-      <div>name: {user.name}</div>
-      <div>age: {user.age}</div>
-      <div>email: {user.email}</div>
-      <button onClick={() => setUser({ ...user, age: user.age + 1 })}>
-        Increment Age
+      <label>
+        Email:
+        <input
+          type="email"
+          value={userInfo.email}
+          onChange={(e) => setUser({ ...userInfo, email: e.target.value })} //e.target.value: to get the value of the input field
+        />
+      </label>
+      <label>
+        Password:
+        <input
+          type="password"
+          value={userInfo.password}
+          onChange={(e) => setUser({ ...userInfo, password: e.target.value })} //e.target.value: to get the value of the input field
+        />
+      </label>
+      <div>email: {userInfo.email}</div>
+      <div>password: {userInfo.password}</div>
+      <div>isLoggedIn: {userInfo.isLoggedIn ? "Yes" : "No"}</div>
+      <button onClick={() => setUser({ ...userInfo, isLoggedIn: true })}>
+        Log In
       </button>
-      <button onClick={() => setUser({ ...user, age: user.age - 1 })}>
-        Decrement Age
+      <button onClick={() => setUser({ ...userInfo, isLoggedIn: false })}>
+        Log Out
       </button>
-      <button onClick={() => setUser({ ...user, age: 0 })}>Reset Age</button>
+      <button onClick={() => setUser({ ...userInfo, email: "", password: "" })}>
+        Reset
+      </button>
     </>
   );
 };
