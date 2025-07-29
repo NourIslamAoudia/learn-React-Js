@@ -19,14 +19,14 @@ const Axios = () => {
       setData(response.data.slice(0, 50)); // Increased to 50 for better demo
 
       toastUpdate(loadingToastId, {
-        render: "✅ Data loaded successfully!",
+        render: "Data loaded successfully !",
         type: "success",
         isLoading: false,
         autoClose: 2500,
       });
     } catch (error) {
       toastUpdate(loadingToastId, {
-        render: `❌ Error loading data: ${error.message}`,
+        render: `Error loading data: ${error.message}`,
         type: "error",
         isLoading: false,
         autoClose: 3000,
