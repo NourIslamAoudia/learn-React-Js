@@ -1,16 +1,17 @@
-
+import { useContext } from "react";
 import { dataContext } from "../src/App";
 
 const ApiContext = () => {
+  const data = useContext(dataContext);
 
   return (
     <>
       <h1>API Context</h1>
-      <dataContext.Consumer>
-        {({ data }) => {
-          return <h1>{data.join(", ")}</h1>;
-        }}
-      </dataContext.Consumer>
+      <ul>
+        {data.data.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </>
   );
 };
