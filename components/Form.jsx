@@ -27,7 +27,7 @@ const Form = () => {
         <input
           id="email"
           type="email"
-          name="email"
+          name="email" //le role de name est de donner un nom au champ pour le récupérer dans l'objet FormData
           placeholder="Enter your email"
         />
         <label htmlFor="password">Password</label>
