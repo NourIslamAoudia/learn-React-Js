@@ -2,6 +2,8 @@
 import Button from "../Button";
 import styles from "./Product.module.css"; // Using CSS Modules for scoped styles
 import ProductCart from "./ProductCart";
+import products from "../../data/product"; // Assuming you have a product data file
+
 
 export const SayHello = (name) => {
   return `Hello, ${name}!`;
@@ -9,18 +11,14 @@ export const SayHello = (name) => {
 
 const Product = () => {
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Product List</h2>
-      <Button oneclick={() => alert(SayHello("John Doe"))}>
-        <span>btn 1</span>
-        <h1>Product 1</h1>
-        <p className={styles.description}>This is a great product.</p>
-      </Button>
-      <Button oneclick={() => alert(SayHello("Jane Smith"))}>
-        <span>btn 2</span>
-        <h1>Product 2</h1>
-        <p className={styles.description}>This is another great product.</p>
-      </Button>
+    <div className={styles.productContainer}>
+      <h1 className={styles.title}>Products</h1>
+      <div className={styles.productList}>
+        {products.map((product, index) => (
+          <ProductCart product={product} index={index} key={index} />
+        ))}
+      </div>
+      <Button className={styles.button}>Add to Cart</Button>
     </div>
   );
 };

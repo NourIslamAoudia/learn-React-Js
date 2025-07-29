@@ -1,6 +1,5 @@
 import styles from "./Product.module.css"; // Using CSS Modules for scoped styles
 
-
 const ProductCart = ({ product, index }) => {
   return (
     <>
