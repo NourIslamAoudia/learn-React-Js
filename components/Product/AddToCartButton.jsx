@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import styles from "./Product.module.css";
 import toast from "react-hot-toast";
-import { cartItemsContext } from "./Product";
+import { cartItemsContext } from "../../src/App"; // Correct import for context
 
 /**
  * A button component for adding products to cart with quantity selection

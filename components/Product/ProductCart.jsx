@@ -1,12 +1,15 @@
+// components/Product/ProductCart.jsx
 import styles from "./Product.module.css";
 import AddToCartButton from "./AddToCartButton";
 import { useState } from "react";
 
 /**
  * ProductCard component displays individual product information
- * @param {Object} product - Product object containing details
+ * @param {Object} props - Component props
+ * @param {Object} props.product - Product object containing details
  */
 const ProductCart = ({ product }) => {
+  // Retirez la prop 'key' ici
   const [isHovered, setIsHovered] = useState(false);
 
   // Format price with 2 decimal places
