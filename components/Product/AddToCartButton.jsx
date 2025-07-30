@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import styles from "./Product.module.css";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
+import { useContext } from "react";
+import { cartItemsContext } from "./Product"; // Import the context from Product.jsx
 
-const AddToCartButton = ({ productId, initialQuantity = 1 }) => {
+const AddToCartButton = ({ product, initialQuantity = 1 }) => {
+  const { setCartItems } = useContext(cartItemsContext);
+  const productId = product.id || product.title; // Use a unique identifier for the product
   const [quantity, setQuantity] = useState(initialQuantity);
   const [isAdded, setIsAdded] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [productInCart, setProductInCart] = useState({});
 
   // Handle adding to cart with animation
   const handleAddToCart = () => {
@@ -14,21 +17,22 @@ const AddToCartButton = ({ productId, initialQuantity = 1 }) => {
     console.log(`Added product ${productId} with quantity ${quantity} to cart`);
     setIsAdded(true);
     setIsAnimating(true);
-    setProductInCart({ id: productId, quantity });
+    // Update cart items in parent component
+    setCartItems((prevItems) => [...prevItems, { product, quantity }]); // ...prevItems : spread operator to keep existing items
     // Show a toast notification
-    toast.success(`Added ${quantity} item${quantity > 1 ? "s" : ""} to cart!`, {
+    toast.success(`Added ${quantity} item${quantity > 1 ? "s" : ""} to cart`, {
       duration: 2000,
       style: {
         background: "#333",
         color: "#fff",
-        fontSize: "16px",
+        fontSize: "17px",
       },
     });
 
     // Reset animation after 2 seconds
     setTimeout(() => {
       setIsAnimating(false);
-    }, 2000);
+    }, 1000);
   };
 
   // Handle quantity change with input validation

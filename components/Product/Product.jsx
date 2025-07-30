@@ -1,9 +1,12 @@
 import styles from "./Product.module.css";
 import ProductCart from "./ProductCart";
 import Products from "../../data/product";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
+
+export const cartItemsContext = createContext();
 
 const ProductPage = () => {
+  const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -38,7 +41,12 @@ const ProductPage = () => {
       <h1 className={styles.title}>Products</h1>
       <div className={styles.productList}>
         {products.map((product) => (
-          <ProductCart product={product} key={product.id || product.title} />
+          <cartItemsContext.Provider
+            value={{ cartItems, setCartItems }}
+            key={product.id || product.title}
+          >
+            <ProductCart product={product} key={product.id || product.title} />
+          </cartItemsContext.Provider>
         ))}
       </div>
     </div>

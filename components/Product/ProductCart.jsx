@@ -19,7 +19,7 @@ const ProductCart = ({ product }) => {
       <span className={styles.badge}>
         {product.category || product.categorie}
       </span>
-      <AddToCartButton productId={product.id} />
+      <AddToCartButton product={product} />
     </div>
   );
 };

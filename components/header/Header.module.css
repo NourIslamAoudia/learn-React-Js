@@ -1,8 +1,19 @@
-ul {
+/* Base styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+}
+
+.navbar {
   list-style-type: none;
   display: flex;
   gap: 20px;
   font-size: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -10,16 +21,65 @@ a {
   color: inherit;
 }
 
-header {
-  display: flex;
+/* Mobile menu button - hidden by default */
+.menuButton {
+  display: none;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 100;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
+.menuButton span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #333;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.menuToggle {
+  display: none;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menuButton {
+    display: flex;
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+  }
+
+  .menuToggle:checked ~ .navbar {
+    right: 0;
+  }
+
+  .menuToggle:checked + .menuButton span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menuToggle:checked + .menuButton span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menuToggle:checked + .menuButton span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
 }
