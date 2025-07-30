@@ -204,70 +204,112 @@
 .addToCartContainer {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 1rem;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 .quantitySelector {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .quantityButton {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   border: 1px solid #e2e8f0;
   background-color: #f8fafc;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #334155;
 }
 
-.quantityButton:hover {
+.quantityButton:hover:not(.disabled) {
   background-color: #e2e8f0;
+  transform: scale(1.05);
+}
+
+.quantityButton:active:not(.disabled) {
+  transform: scale(0.95);
+}
+
+.quantityButton.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .quantityInput {
-  width: 3rem;
-  height: 2rem;
+  width: 4rem;
+  height: 2.5rem;
   text-align: center;
   border: 1px solid #e2e8f0;
-  border-radius: 4px;
-  font-size: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  transition: all 0.2s ease;
+}
+
+.quantityInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.quantityInput.bounce {
+  animation: bounce 0.3s ease;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 .addToCartButton {
-  padding: 0.75rem;
+  padding: 1rem;
   background-color: #3b82f6;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.addToCartButton:hover {
+.addToCartButton:hover:not(:disabled) {
   background-color: #2563eb;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.addToCartButton:active {
+.addToCartButton:active:not(:disabled) {
   transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .addToCartButton.added {
   background-color: #10b981;
+  cursor: default;
 }
 
 .addToCartButton:disabled {
@@ -276,20 +318,92 @@
   transform: none;
 }
 
+.addToCartButton.pulse {
+  animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.checkmark {
+  font-size: 1.2rem;
+  animation: checkmark 0.5s ease;
+}
+
+@keyframes checkmark {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.feedbackMessage {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #10b981;
+  margin-top: -0.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .addToCartContainer {
+    gap: 0.75rem;
+  }
+
   .addToCartButton {
-    padding: 0.6rem;
-    font-size: 0.8rem;
+    padding: 0.85rem;
+    font-size: 0.85rem;
   }
 
   .quantityButton {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.1rem;
   }
 
   .quantityInput {
-    width: 2.8rem;
-    height: 1.8rem;
+    width: 3.5rem;
+    height: 2.2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .quantityButton {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .quantityInput {
+    width: 3rem;
+    height: 2rem;
   }
 }

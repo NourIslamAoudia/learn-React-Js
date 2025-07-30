@@ -5,7 +5,7 @@ const Products = [
     title: "Wireless Mouse",
     price: 19.99,
     categorie: "Electronics",
-    rate: 4.5,
+    rate: 3,
     description: "A high-quality wireless mouse with ergonomic design.",
     image:
       "https://www.dusanholovej.com/files/layout/img/blog/TUTORIAL-Shampoo-and-Shower-Gel.jpg",
@@ -15,7 +15,7 @@ const Products = [
     title: "Bluetooth Headphones",
     price: 49.99,
     categorie: "Electronics",
-    rate: 4.7,
+    rate: 2,
     description:
       "Noise-cancelling Bluetooth headphones with long battery life.",
     image:
@@ -26,7 +26,7 @@ const Products = [
     title: "Yoga Mat",
     price: 15.99,
     categorie: "Fitness",
-    rate: 4.8,
+    rate: 5,
     description: "Non-slip yoga mat for comfortable workouts.",
     image:
       "https://www.dusanholovej.com/files/layout/img/blog/TUTORIAL-Shampoo-and-Shower-Gel.jpg",
@@ -36,7 +36,7 @@ const Products = [
     title: "Stainless Steel Water Bottle",
     price: 12.5,
     categorie: "Home & Kitchen",
-    rate: 4.6,
+    rate: 1,
     description: "Durable stainless steel water bottle with vacuum insulation.",
     image:
       "https://www.dusanholovej.com/files/layout/img/blog/TUTORIAL-Shampoo-and-Shower-Gel.jpg",
@@ -46,7 +46,7 @@ const Products = [
     title: "Desk Lamp",
     price: 22.0,
     categorie: "Home & Office",
-    rate: 4.5,
+    rate: 5,
     description: "Adjustable desk lamp with LED lighting.",
     image:
       "https://www.dusanholovej.com/files/layout/img/blog/TUTORIAL-Shampoo-and-Shower-Gel.jpg",

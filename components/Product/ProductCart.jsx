@@ -14,8 +14,7 @@ const ProductCart = ({ product }) => {
       <p className={styles.price}>${product.price}</p>
       <p className={styles.description}>{product.description}</p>
       <div className={styles.rate}>
-        <span>{product.rating?.rate || product.rate}</span>
-        <span>★</span>
+        {"★".repeat(product.rate) + "☆".repeat(5 - product.rate)}
       </div>
       <span className={styles.badge}>
         {product.category || product.categorie}

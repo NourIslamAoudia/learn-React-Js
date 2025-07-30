@@ -1,31 +1,66 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Product.module.css";
 
-const AddToCartButton = ({ productId }) => {
-  const [quantity, setQuantity] = useState(1);
+const AddToCartButton = ({ productId, initialQuantity = 1 }) => {
+  const [quantity, setQuantity] = useState(initialQuantity);
   const [isAdded, setIsAdded] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
+  // Handle adding to cart with animation
   const handleAddToCart = () => {
-    // Ici vous pouvez ajouter la logique pour ajouter au panier
+    if (isAdded) return;
+
     console.log(`Added product ${productId} with quantity ${quantity} to cart`);
     setIsAdded(true);
-    setTimeout(() => setIsAdded(false), 2000);
+    setIsAnimating(true);
+
+    // Reset animation after 2 seconds
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 2000);
   };
-  // Fonction pour gérer le changement de quantité
-  // Limite la quantité entre 1 et 99
+
+  // Handle quantity change with input validation
   const handleQuantityChange = (e) => {
-    const value = Math.max(1, Math.min(99, parseInt(e.target.value) || 1));
-    setQuantity(value);
+    const value = e.target.value;
+    if (value === "") {
+      setQuantity("");
+      return;
+    }
+
+    const numValue = parseInt(value);
+    if (!isNaN(numValue)) {
+      setQuantity(Math.max(1, Math.min(99, numValue)));
+    }
+  };
+
+  // Handle blur to ensure valid quantity
+  const handleBlur = () => {
+    if (quantity === "" || quantity < 1) {
+      setQuantity(1);
+    }
+  };
+
+  // Handle increment/decrement with animation
+  const adjustQuantity = (amount) => {
+    const newQuantity = Math.max(1, Math.min(99, quantity + amount));
+    setQuantity(newQuantity);
+    setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 200);
   };
 
   return (
     <div className={styles.addToCartContainer}>
       <div className={styles.quantitySelector}>
         <button
-          onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-          className={styles.quantityButton}
+          onClick={() => adjustQuantity(-1)}
+          className={`${styles.quantityButton} ${
+            quantity <= 1 ? styles.disabled : ""
+          }`}
+          disabled={quantity <= 1}
+          aria-label="Decrease quantity"
         >
-          -
+          −
         </button>
         <input
           type="number"
@@ -33,22 +68,46 @@ const AddToCartButton = ({ productId }) => {
           max="99"
           value={quantity}
           onChange={handleQuantityChange}
-          className={styles.quantityInput}
+          onBlur={handleBlur}
+          className={`${styles.quantityInput} ${
+            isAnimating ? styles.bounce : ""
+          }`}
+          aria-label="Product quantity"
         />
         <button
-          onClick={() => setQuantity((q) => Math.min(99, q + 1))}
-          className={styles.quantityButton}
+          onClick={() => adjustQuantity(1)}
+          className={`${styles.quantityButton} ${
+            quantity >= 99 ? styles.disabled : ""
+          }`}
+          disabled={quantity >= 99}
+          aria-label="Increase quantity"
         >
           +
         </button>
       </div>
       <button
         onClick={handleAddToCart}
-        className={`${styles.addToCartButton} ${isAdded ? styles.added : ""}`}
+        className={`${styles.addToCartButton} 
+          ${isAdded ? styles.added : ""} 
+          ${isAnimating ? styles.pulse : ""}`}
         disabled={isAdded}
+        aria-label={isAdded ? "Item added to cart" : "Add item to cart"}
       >
-        {isAdded ? "✓ Added!" : "Add to Cart"}
+        {isAdded ? (
+          <>
+            <span className={styles.checkmark}>✓</span> Added to Cart!
+          </>
+        ) : (
+          "Add to Cart"
+        )}
       </button>
+
+      {/* Micro-interaction feedback */}
+      {isAdded && (
+        <div className={styles.feedbackMessage}>
+          {quantity} item{quantity > 1 ? "s" : ""} added to your cart
+        </div>
+      )}
     </div>
   );
 };
