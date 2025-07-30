@@ -216,12 +216,12 @@
 }
 
 .quantityButton {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 1.7rem;
+  height: 1.7rem;
   border-radius: 50%;
   border: 1px solid #e2e8f0;
   background-color: #f8fafc;
-  font-size: 1.25rem;
+  font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -246,8 +246,8 @@
 }
 
 .quantityInput {
-  width: 4rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 2rem;
   text-align: center;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -278,7 +278,7 @@
 }
 
 .addToCartButton {
-  padding: 1rem;
+  padding: 0.7rem;
   background-color: #3b82f6;
   color: white;
   border: none;
@@ -287,7 +287,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   letter-spacing: 0.5px;
   display: flex;
   align-items: center;
@@ -310,6 +310,7 @@
 .addToCartButton.added {
   background-color: #10b981;
   cursor: default;
+  padding: 0.5rem;
 }
 
 .addToCartButton:disabled {

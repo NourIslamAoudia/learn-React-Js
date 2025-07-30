@@ -1,18 +1,29 @@
 import { useState, useEffect } from "react";
 import styles from "./Product.module.css";
+import toast, { Toaster } from "react-hot-toast";
 
 const AddToCartButton = ({ productId, initialQuantity = 1 }) => {
   const [quantity, setQuantity] = useState(initialQuantity);
   const [isAdded, setIsAdded] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [productInCart, setProductInCart] = useState({});
 
   // Handle adding to cart with animation
   const handleAddToCart = () => {
     if (isAdded) return;
-
     console.log(`Added product ${productId} with quantity ${quantity} to cart`);
     setIsAdded(true);
     setIsAnimating(true);
+    setProductInCart({ id: productId, quantity });
+    // Show a toast notification
+    toast.success(`Added ${quantity} item${quantity > 1 ? "s" : ""} to cart!`, {
+      duration: 2000,
+      style: {
+        background: "#333",
+        color: "#fff",
+        fontSize: "16px",
+      },
+    });
 
     // Reset animation after 2 seconds
     setTimeout(() => {
@@ -27,7 +38,7 @@ const AddToCartButton = ({ productId, initialQuantity = 1 }) => {
       setQuantity("");
       return;
     }
-
+    // Ensure the input is a valid number between 1 and 99
     const numValue = parseInt(value);
     if (!isNaN(numValue)) {
       setQuantity(Math.max(1, Math.min(99, numValue)));
