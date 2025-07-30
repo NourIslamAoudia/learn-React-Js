@@ -1,26 +1,48 @@
-// src/components/ProductPage.jsx
-import Button from "../Button";
-import styles from "./Product.module.css"; // Using CSS Modules for scoped styles
+import styles from "./Product.module.css";
 import ProductCart from "./ProductCart";
-import products from "../../data/product"; // Assuming you have a product data file
+import Products from "../../data/product";
+import { useState, useEffect } from "react";
 
+const ProductPage = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-export const SayHello = (name) => {
-  return `Hello, ${name}!`;
-};
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setProducts(Products);
+      setLoading(false);
+    }, 2000); // 2000 milliseconds (2 seconds) delay
+  }, []);
 
-const Product = () => {
+  if (loading) {
+    return (
+      <div className={styles.productContainer}>
+        <h1 className={styles.title}>Products</h1>
+        <div className={styles.productList}>
+          {Array.from({ length: 6 }).map((_, index) => (
+            <div key={index} className={styles.skeletonCard}>
+              <div className={styles.skeletonImage}></div>
+              <div className={styles.skeletonText}></div>
+              <div className={styles.skeletonText}></div>
+              <div className={styles.skeletonText}></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.productContainer}>
       <h1 className={styles.title}>Products</h1>
       <div className={styles.productList}>
-        {products.map((product, index) => (
-          <ProductCart product={product} index={index} key={index} />
+        {products.map((product) => (
+          <ProductCart product={product} key={product.id || product.title} />
         ))}
       </div>
-      <Button className={styles.button}>Add to Cart</Button>
     </div>
   );
 };
 
-export default Product;
+export default ProductPage;
