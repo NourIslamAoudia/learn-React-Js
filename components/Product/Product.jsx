@@ -1,5 +1,5 @@
 // components/Product/Product.jsx
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect} from "react";
 import styles from "./Product.module.css";
 import ProductCart from "./ProductCart";
 import Products from "../../data/product";

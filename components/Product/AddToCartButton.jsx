@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState} from "react";
 import styles from "./Product.module.css";
 import toast from "react-hot-toast";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext.jsx";

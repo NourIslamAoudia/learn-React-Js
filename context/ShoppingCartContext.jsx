@@ -2,10 +2,13 @@
 import { useState, useEffect, createContext, useContext } from "react";
 
 // Créer le contexte avec des valeurs par défaut appropriées
+// le but de ce contexte est de partager les éléments du panier entre les composants
+// et de permettre aux composants d'accéder et de modifier le panier
 export const cartItemsContext = createContext({}); // as object without initial values
 
 const ShoppingCartContextProvider = ({ children }) => {
-  //children is the content that will be wrapped by this context provider, because we cant use contactValue directly in the context provider
+  //children is the content that will be wrapped by this context provider, because we cant use contextValue directly in the context provider
+  //initializing cartItems with a value from localStorage if available
   const [cartItems, setCartItems] = useState(() => {
     try {
       // Try to retrieve the cart from localStorage
@@ -40,6 +43,8 @@ const ShoppingCartContextProvider = ({ children }) => {
 
 export default ShoppingCartContextProvider;
 
+// Custom hook to use the ShoppingCartContext
+// This allows components to access the context without needing to import it directly
 export const useShoppingCartContext = () => {
   const context = useContext(cartItemsContext);
   if (!context) {
