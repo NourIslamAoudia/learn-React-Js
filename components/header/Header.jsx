@@ -1,4 +1,4 @@
-import styles from "./header.module.css"; // Using CSS Modules for scoped styles
+import styles from "./Header.module.css"; // Using CSS Modules for scoped styles
 import NavBar from "./NavBar";
 
 const Header = () => {
