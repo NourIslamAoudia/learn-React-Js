@@ -1,2 +1,7 @@
 /* (Spécifique au composant App.jsx)
 Ici, tu mets les styles liés au layout de ton app, ou ceux appliqués à des divs spécifiques de App.jsx. */
+/* src/app.css */
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
