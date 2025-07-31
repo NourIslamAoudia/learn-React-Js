@@ -1,5 +1,5 @@
 // src/App.jsx
-import "./app.css";
+import "./App.css";
 import Form from "../components/Form";
 import Axios from "../components/Axios";
 import { Toaster } from "react-hot-toast";
