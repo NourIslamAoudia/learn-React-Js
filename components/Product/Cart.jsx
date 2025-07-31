@@ -29,8 +29,6 @@ const Cart = () => {
     setCartItems((prevItems) => {
       const updatedItems = [...prevItems];
       updatedItems[index].quantity = newQuantity;
-      localStorage.setItem("myCart", JSON.stringify(updatedItems));
-
       return updatedItems;
     });
   };
@@ -45,10 +43,6 @@ const Cart = () => {
         fontSize: "17px",
       },
     });
-    localStorage.setItem(
-      "myCart",
-      JSON.stringify(cartItems.filter((_, i) => i !== index))
-    );
   };
 
   const handleCheckout = () => {

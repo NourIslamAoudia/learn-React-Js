@@ -34,11 +34,6 @@ const AddToCartButton = ({ product, initialQuantity = 1 }) => {
 
     // Update cart context
     setCartItems((prevItems) => [...prevItems, { product, quantity }]);
-    localStorage.setItem(
-      "myCart",
-      JSON.stringify([...cartItems, { product, quantity }])
-    );
-
     // Show success notification
     toast.success(`Added ${quantity} item${quantity > 1 ? "s" : ""} to cart`, {
       duration: 2000,
