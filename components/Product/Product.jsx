@@ -3,10 +3,10 @@ import { useState, useEffect, useContext } from "react";
 import styles from "./Product.module.css";
 import ProductCart from "./ProductCart";
 import Products from "../../data/product";
-import { cartItemsContext } from "../../context/ShoppingCartContext.jsx";
+import { useShoppingCartContext } from "../../context/ShoppingCartContext.jsx";
 
 const ProductPage = () => {
-  const { cartItems } = useContext(cartItemsContext);
+  const { cartItems } = useShoppingCartContext();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

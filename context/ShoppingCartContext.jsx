@@ -1,5 +1,5 @@
 // context/ShoppingCartContext.jsx
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 
 // Créer le contexte avec des valeurs par défaut appropriées
 export const cartItemsContext = createContext({}); // as object without initial values
@@ -39,3 +39,13 @@ const ShoppingCartContextProvider = ({ children }) => {
 };
 
 export default ShoppingCartContextProvider;
+
+export const useShoppingCartContext = () => {
+  const context = useContext(cartItemsContext);
+  if (!context) {
+    throw new Error(
+      "useShoppingCartContext must be used within a ShoppingCartContextProvider"
+    );
+  }
+  return context;
+};

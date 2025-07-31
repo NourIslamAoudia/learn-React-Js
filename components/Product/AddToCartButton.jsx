@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import styles from "./Product.module.css";
 import toast from "react-hot-toast";
-import {cartItemsContext} from "../../context/ShoppingCartContext.jsx";
+import { useShoppingCartContext } from "../../context/ShoppingCartContext.jsx";
 
 /**
  * A button component for adding products to cart with quantity selection
@@ -10,7 +10,7 @@ import {cartItemsContext} from "../../context/ShoppingCartContext.jsx";
  */
 const AddToCartButton = ({ product, initialQuantity = 1 }) => {
   // Context and state initialization
-  const { setCartItems, cartItems } = useContext(cartItemsContext);
+  const { setCartItems } = useShoppingCartContext();
   const productId = product.id || product.title;
 
   // Component state

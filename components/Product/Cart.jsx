@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { cartItemsContext } from "../../context/ShoppingCartContext.jsx";
+import { useShoppingCartContext } from "../../context/ShoppingCartContext.jsx";
 import styles from "./Product.module.css";
 import toast from "react-hot-toast";
 
 const Cart = () => {
-  const { cartItems, setCartItems } = useContext(cartItemsContext);
+  const { cartItems, setCartItems } = useShoppingCartContext();
   console.log(cartItems);
 
   // Calcul des prix
