@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { cartItemsContext } from "../../src/App"; // Correct import for context
+import { cartItemsContext } from "../../context/ShoppingCartContext.jsx";
 import styles from "./Product.module.css";
 import toast from "react-hot-toast";
 

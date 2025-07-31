@@ -4,7 +4,7 @@
 /* Modern CSS Reset with sensible defaults */
 *, *::before, *::after {
   margin: 0;
-  padding: 0;
+  padding: 0px;
   box-sizing: border-box;
 }
 
