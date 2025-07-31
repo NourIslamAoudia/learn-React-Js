@@ -29,7 +29,7 @@ const ProductPage = () => {
   }, []);
 
   const renderLoadingSkeletons = () =>
-    Array.from({ length: 6 }).map((_, index) => (
+    Array.from({ length: 8 }).map((_, index) => (
       <div key={`skeleton-${index}`} className={styles.skeletonCard}>
         <div className={styles.skeletonImage}></div>
         <div className={styles.skeletonText}></div>

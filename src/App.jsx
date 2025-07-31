@@ -17,7 +17,10 @@ export const dataContext = createContext();
 export const cartItemsContext = createContext();
 const App = () => {
   const data = ["islam", "CyberSecurity", "WebDev"];
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+    const savedCart = localStorage.getItem("myCart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
   return (
     <>
       <cartItemsContext.Provider value={{ cartItems, setCartItems }}>

@@ -10,7 +10,7 @@ import { cartItemsContext } from "../../src/App"; // Correct import for context
  */
 const AddToCartButton = ({ product, initialQuantity = 1 }) => {
   // Context and state initialization
-  const { setCartItems } = useContext(cartItemsContext);
+  const { setCartItems, cartItems } = useContext(cartItemsContext);
   const productId = product.id || product.title;
 
   // Component state
@@ -34,6 +34,10 @@ const AddToCartButton = ({ product, initialQuantity = 1 }) => {
 
     // Update cart context
     setCartItems((prevItems) => [...prevItems, { product, quantity }]);
+    localStorage.setItem(
+      "myCart",
+      JSON.stringify([...cartItems, { product, quantity }])
+    );
 
     // Show success notification
     toast.success(`Added ${quantity} item${quantity > 1 ? "s" : ""} to cart`, {
