@@ -1,25 +1,142 @@
-/*global styles */
-/* Reset some default styles */
-/* This is a global CSS file that applies styles to the entire application */
-/* It sets the base styles for the HTML elements, including font size, background color, and text color */
+/* src/index.css */
+/* Global Styles & CSS Reset */
 
-/* Les reset CSS
-Les polices globales
-Les couleurs de base
-Des styles généraux (body, h1, etc.) */
-
-* {
+/* Modern CSS Reset with sensible defaults */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Core HTML elements */
 html {
   scroll-behavior: smooth;
-  background-color: #f0f0f0;
+  font-size: 16px; /* Base font size for rem units */
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
   color: #333;
-  line-height: 1.5;
-  font-family: Arial, sans-serif;
-  font-size: 1.3rem; /* 16px */
-  line-height: 1.5;
+  background-color: #f8f9fa;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 0.75em;
+  color: #222;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Images and media */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Forms */
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* Utility classes */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Layout helpers */
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+/* Animation basics */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: none;
+    color: black;
+    font-size: 12pt;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
 }

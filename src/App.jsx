@@ -2,7 +2,6 @@
 import "./app.css";
 import Form from "../components/Form";
 import Axios from "../components/Axios";
-import "react-toastify/dist/ReactToastify.css";
 import { Toaster } from "react-hot-toast";
 import Footer from "../components/Footer"; // Make sure this component exists
 import UseRef from "../components/UseRef"; // Assuming you have a UseRef component
@@ -22,17 +21,18 @@ const App = () => {
   return (
     <>
       <cartItemsContext.Provider value={{ cartItems, setCartItems }}>
-        <Router>
-          <Header />
-          <Routes>
-            <Route path="/" element={<ProductPage />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/products" element={<h2>All Products Page</h2>} />
-            <Route path="/about" element={<h2>About Us Page</h2>} />
-            <Route path="*" element={<h2>404 - Page Not Found</h2>} />
-          </Routes>
-          <Toaster />
-        </Router>
+        <Header />
+        <ProductPage />
+        <Toaster />
+        {/* <dataContext.Provider value={{ data }}>
+        <ApiContext />
+      </dataContext.Provider>
+      <Form />
+      <UseRef />
+      <Axios />
+      <ToastContainer newestOnTop limit={3} /> */}
+        <Cart />
+        <Footer />
       </cartItemsContext.Provider>
     </>
   );

@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { cartItemsContext } from "../../src/App"; // Correct import for context
 import styles from "./Product.module.css";
-import { Link } from "react-router-dom"; // Pour une navigation plus fluide
 
 const Cart = () => {
   const { cartItems, setCartItems } = useContext(cartItemsContext);
@@ -16,19 +15,19 @@ const Cart = () => {
   const tax = subtotal * 0.1;
   const total = subtotal + shipping + tax;
 
-  // const updateQuantity = (index, newQuantity) => {
-  //   if (newQuantity < 1 || newQuantity > 99) return;
+  const updateQuantity = (index, newQuantity) => {
+    if (newQuantity < 1 || newQuantity > 99) return;
 
-  //   setCartItems((prevItems) => {
-  //     const updatedItems = [...prevItems];
-  //     updatedItems[index].quantity = newQuantity;
-  //     return updatedItems;
-  //   });
-  // };
+    setCartItems((prevItems) => {
+      const updatedItems = [...prevItems];
+      updatedItems[index].quantity = newQuantity;
+      return updatedItems;
+    });
+  };
 
-  // const removeItem = (index) => {
-  //   setCartItems((prevItems) => prevItems.filter((_, i) => i !== index));
-  // };
+  const removeItem = (index) => {
+    setCartItems((prevItems) => prevItems.filter((_, i) => i !== index));
+  };
 
   return (
     <div className={styles.cartContainer}>
@@ -38,10 +37,6 @@ const Cart = () => {
         <div className={styles.emptyCart}>
           <div className={styles.emptyCartIcon}>🛒</div>
           <h2>Your cart is empty</h2>
-          <p>Looks like you haven't added anything to your cart yet</p>
-          <Link to="/" className={styles.continueShoppingBtn}>
-            Continue Shopping
-          </Link>
         </div>
       ) : (
         <>
@@ -121,9 +116,6 @@ const Cart = () => {
             >
               Proceed to Checkout
             </button>
-            <Link to="/products" className={styles.continueShoppingLink}>
-              ← Continue Shopping
-            </Link>
           </div>
         </>
       )}
