@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { cartItemsContext } from "../../src/App"; // Correct import for context
 import styles from "./Product.module.css";
+import toast from "react-hot-toast";
 
 const Cart = () => {
   const { cartItems, setCartItems } = useContext(cartItemsContext);
@@ -17,16 +18,55 @@ const Cart = () => {
 
   const updateQuantity = (index, newQuantity) => {
     if (newQuantity < 1 || newQuantity > 99) return;
-
+    toast.success(`Updated quantity to ${newQuantity}`, {
+      duration: 2000,
+      style: {
+        background: "#333",
+        color: "#fff",
+        fontSize: "17px",
+      },
+    });
     setCartItems((prevItems) => {
       const updatedItems = [...prevItems];
       updatedItems[index].quantity = newQuantity;
+
       return updatedItems;
     });
   };
 
   const removeItem = (index) => {
     setCartItems((prevItems) => prevItems.filter((_, i) => i !== index));
+    toast.error("Item removed from cart", {
+      duration: 2000,
+      style: {
+        background: "#333",
+        color: "#fff",
+        fontSize: "17px",
+      },
+    });
+  };
+
+  const handleCheckout = () => {
+    if (cartItems.length === 0) {
+      toast.error("Your cart is empty", {
+        duration: 2000,
+        style: {
+          background: "#333",
+          color: "#fff",
+          fontSize: "17px",
+        },
+      });
+      return;
+    }
+    // Logic for checkout can be added here
+    toast.success("Proceeding to checkout", {
+      duration: 2000,
+      style: {
+        background: "#333",
+        color: "#fff",
+        fontSize: "17px",
+      },
+    });
   };
 
   return (
@@ -37,6 +77,9 @@ const Cart = () => {
         <div className={styles.emptyCart}>
           <div className={styles.emptyCartIcon}>🛒</div>
           <h2>Your cart is empty</h2>
+          <button className={styles.checkoutBtn} onClick={handleCheckout}>
+            Proceed to Checkout
+          </button>
         </div>
       ) : (
         <>
@@ -110,10 +153,7 @@ const Cart = () => {
               <span>Total</span>
               <span>${total.toFixed(2)}</span>
             </div>
-            <button
-              className={styles.checkoutBtn}
-              onClick={() => alert("Proceeding to checkout")} // À remplacer par votre logique de checkout
-            >
+            <button className={styles.checkoutBtn} onClick={handleCheckout}>
               Proceed to Checkout
             </button>
           </div>
