@@ -61,7 +61,7 @@ const ProductPage = () => {
 
       {cartItems.length > 0 && (
         <div className={styles.cartSummary}>
-          Items in cart: {cartItems.length}
+          <strong>Items in cart: {cartItems.length}</strong>
         </div>
       )}
 

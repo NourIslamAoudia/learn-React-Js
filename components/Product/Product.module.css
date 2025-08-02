@@ -622,10 +622,18 @@
 /* Cart Summary */
 .cartSummary {
   background-color: var(--bg-white);
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+  margin-bottom: 10px;
 }
+
+.cartSummary strong {
+  color: red;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
 
 .cartSummary h2 {
   font-size: 1.5rem;
