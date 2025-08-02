@@ -5,8 +5,10 @@ import style from "../Button.module.css";
 
 const initialState = {
   posts: [],
-  loading: false,
+  loading: true,
   error: null,
+  display: true,
+  btnName: "Hide Posts",
 };
 
 const reducer = (state, action) => {
@@ -17,6 +19,12 @@ const reducer = (state, action) => {
       return { ...state, posts: action.payload, loading: false };
     case "FETCH_ERROR":
       return { ...state, error: action.payload, loading: false };
+    case "TOGGLE_DISPLAY":
+      return {
+        ...state,
+        display: !state.display,
+        btnName: state.display ? "Show Posts" : "Hide Posts",
+      };
     default:
       return state;
   }
@@ -37,19 +45,24 @@ const AxiosPosts = () => {
   }, []);
 
   useEffect(() => {
+    if (state.display) {
+      fetchData();
+    }
   }, [fetchData]);
 
   return (
     <>
-      <button className={style.button} onClick={fetchData}>
-        Load Posts
+      <button
+        className={style.button}
+        onClick={() => dispatch({ type: "TOGGLE_DISPLAY" })}
+      >
+        {state.btnName}
       </button>
       {state.loading && <Skeleton />}
       {state.error && <p>Error: {state.error}</p>}
       <ul>
-        {state.posts.map((post) => (
-          <li key={post.id}>{post.title}</li>
-        ))}
+        {state.display &&
+          state.posts.map((post) => <li key={post.id}>{post.title}</li>)}
       </ul>
     </>
   );
