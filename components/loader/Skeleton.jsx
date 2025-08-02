@@ -1,6 +1,6 @@
 import "./Skeleton.css"; // adapte le chemin
 const Skeleton = () => {
-  const fakeArray = new Array(10).fill(0); // 10 éléments fictifs
+  const fakeArray = new Array(5).fill(0); // 5 éléments fictifs
 
   return (
     <ul className="skeleton-list">

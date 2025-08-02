@@ -11,11 +11,13 @@ import Footer from "../components/Footer";
 import UseReduce from "../components/UseReduce";
 import MainC from "../components/UseReducer/MainC";
 import CountContextProvider from "../context/CountContext.jsx";
+import AxiosPosts from "../components/UseReducer/AxiosPosts.jsx";
 
 const App = () => {
   return (
     <>
       <Header />
+      <AxiosPosts />
       <CountContextProvider>
         <MainC />
       </CountContextProvider>

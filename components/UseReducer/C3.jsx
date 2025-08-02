@@ -7,21 +7,21 @@ const C3 = () => {
     <>
       <button
         className={styles.button}
-        onClick={() => dispatch({ type: "increment", value: 1 })}
+        onClick={() => dispatch({ type: "increment", value: 3 })}
       >
-        Increment
+        Increment +3
       </button>
       <button
         className={styles.button}
-        onClick={() => dispatch({ type: "decrement", value: 1 })}
+        onClick={() => dispatch({ type: "decrement", value: 3 })}
       >
-        Decrement
+        Decrement -3
       </button>
       <button
         className={styles.button}
         onClick={() => dispatch({ type: "reset" })}
       >
-        Reset
+        Reset to 0
       </button>
     </>
   );

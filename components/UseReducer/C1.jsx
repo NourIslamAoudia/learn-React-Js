@@ -10,19 +10,19 @@ const C1 = () => {
         className={styles.button}
         onClick={() => dispatch({ type: "increment", value: 1 })}
       >
-        Increment
+        Increment +1
       </button>
       <button
         className={styles.button}
         onClick={() => dispatch({ type: "decrement", value: 1 })}
       >
-        Decrement
+        Decrement -1
       </button>
       <button
         className={styles.button}
         onClick={() => dispatch({ type: "reset" })}
       >
-        Reset
+        Reset to 0
       </button>
     </>
   );
