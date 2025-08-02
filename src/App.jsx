@@ -9,12 +9,16 @@ import ProductPage from "../components/Product/Product";
 import Cart from "../components/Product/Cart";
 import Footer from "../components/Footer";
 import UseReduce from "../components/UseReduce";
+import MainC from "../components/UseReducer/MainC";
+import CountContextProvider from "../context/CountContext.jsx";
 
 const App = () => {
   return (
     <>
       <Header />
-      <UseReduce />
+      <CountContextProvider>
+        <MainC />
+      </CountContextProvider>
       <ProductPage />
       <Cart />
       <Footer />
